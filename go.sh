@@ -51,7 +51,21 @@ fi
 while true; do
   echo "$(date '+%Y-%m-%d %H:%M:%S') - cfnat 启动 ..." >> "$LOG"
 
-  "$CFNAT_BINARY"     -addr="0.0.0.0:1234"     -colo="$colo_upper"     -delay="$delay"     -ips="$ips"     -port="$port"     -tls="$tls"     -random="$random"     -ipnum="$ipnum"     -num="$num"     -task="$task"     -code="$code"     -domain="$domain"     >> "$LOG" 2>&1   || echo "$(date '+%Y-%m-%d %H:%M:%S') - cfnat 异常退出，5 秒后重启..." >> "$LOG"
+  "$CFNAT_BINARY" \
+    -addr="0.0.0.0:1234" \
+    -colo="$colo_upper" \
+    -delay="$delay" \
+    -ips="$ips" \
+    -port="$port" \
+    -tls="$tls" \
+    -random="$random" \
+    -ipnum="$ipnum" \
+    -num="$num" \
+    -task="$task" \
+    -code="$code" \
+    -domain="$domain" \
+    >> "$LOG" 2>&1 \
+  || echo "$(date '+%Y-%m-%d %H:%M:%S') - cfnat 异常退出，5 秒后重启..." >> "$LOG"
 
   sleep 5
 done
